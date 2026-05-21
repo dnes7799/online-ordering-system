@@ -13,3 +13,7 @@ def health() -> dict[str, str]:
 @app.get("/hello/{name}")
 def say_hello(name:str) -> dict [str, str]:
     return {"message": f"Hello, {name}!"}
+
+@app.get("/test")
+def test():
+    return {"message": "Test endpoint"}
