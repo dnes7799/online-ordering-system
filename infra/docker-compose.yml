@@ -1,0 +1,22 @@
+services:
+  postgres: 
+    image: postgres:16-alpine
+    container_name: online_sys_postgres
+    environment:
+      POSTGRES_USER: dinesh
+      POSTGRES_PASSWORD: dinesh123
+      POSTGRES_DB: online_sys_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dinesh"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+
+volumes:
+  postgres_data:
